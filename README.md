@@ -1,6 +1,6 @@
 # Portafolio Profesional — Santiago Jaramillo Valencia
 
-Portafolio web técnico y profesional orientado a reclutadores, ingenieros líderes y oportunidades de prácticas formativas en **Data Engineering**, **Data Science** y **Software Engineering**.
+Portafolio web técnico y profesional orientado a reclutadores, ingenieros líderes y oportunidades laborales en **Data Engineering**, **Data Science** y **Software Engineering**.
 
 Desplegado en GitHub Pages: **[https://santiagox01.github.io](https://santiagox01.github.io)**
 
