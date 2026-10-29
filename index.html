@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio de Santiago Jaramillo Valencia. Ingeniería de Sistemas, Ciencia de Datos, Python, SQL y desarrollo de software.">
+  <title>Santiago Jaramillo | Data & Software</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #131b2e;
+      --text: #edf2ff;
+      --muted: #a5b2cc;
+      --accent: #70e1c1;
+      --border: #29364d;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(1080px, 90%);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo { font-weight: 800; letter-spacing: 1px; }
+    .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+
+    .hero { padding: 90px 0 70px; }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1.08;
+      margin: 16px 0;
+      letter-spacing: -2px;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .intro {
+      color: var(--muted);
+      max-width: 680px;
+      font-size: 1.12rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      font-weight: 650;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #071711;
+    }
+
+    section { padding: 50px 0; }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .section-intro { color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .card h3 { margin: 0 0 8px; }
+    .card p { color: var(--muted); margin-top: 0; }
+    .card .links { margin-top: auto; padding-top: 12px; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      padding: 4px 9px;
+      margin: 3px;
+      background: #202d42;
+      color: #c9f7e9;
+      border-radius: 5px;
+    }
+
+    .skills { margin-top: 20px; }
+
+    .contact-box {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 28px;
+      border-radius: 14px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding-top: 55px; }
+      .nav-links { gap: 12px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a class="logo" href="#">SJ<span style="color:var(--accent)">.</span></a>
+      <div class="nav-links">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="eyebrow">Systems Engineering · Data Science</div>
+      <h1>Hola, soy Santiago.<br>
+        Construyo soluciones con <span>datos y código.</span>
+      </h1>
+      <p class="intro">
+        Estudiante de Ingeniería de Sistemas en la Universidad de Antioquia
+        e Ingeniería en Ciencia de Datos en el ITM. Me interesa transformar
+        datos en información útil mediante programación, bases de datos,
+        análisis y desarrollo de software.
+      </p>
+      <div class="buttons">
+        <a class="btn primary" href="#proyectos">Explorar proyectos ↘</a>
+        <a class="btn" href="https://github.com/Santiagox01"
+           target="_blank" rel="noopener noreferrer">Mi GitHub ↗</a>
+        <a class="btn" href="mailto:santiagojaramillovalencia2@gmail.com">Contactarme</a>
+      </div>
+    </section>
+
+    <section id="sobre-mi" class="container">
+      <h2>Sobre mí</h2>
+      <p class="intro">
+        Mi formación combina ingeniería de software y ciencia de datos.
+        He trabajado en proyectos de integración de APIs, clasificación
+        mediante aprendizaje automático, modelado dimensional y desarrollo
+        de servicios backend. Disfruto aprender, experimentar y construir
+        soluciones reproducibles.
+      </p>
+    </section>
+
+    <section id="proyectos" class="container">
+      <h2>Proyectos destacados</h2>
+      <p class="section-intro">
+        Algunos proyectos académicos y personales en los que he trabajado.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Academic Data Warehouse</h3>
+          <p>
+            Diseño de un Data Warehouse académico con esquema en estrella,
+            proceso ETL, validación de integridad y consultas analíticas
+            sobre datos sintéticos de matrícula.
+          </p>
+          <div>
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">DuckDB</span>
+            <span class="tag">Pandas</span>
+          </div>
+          <div class="links">
+            <a href="https://github.com/Santiagox01/academic-data-warehouse"
+               target="_blank" rel="noopener noreferrer">Ver repositorio →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>AirFusion TEMPO</h3>
+          <p>
+            Aplicación web que integra datos de sensores simulados,
+            OpenAQ y NASA TEMPO, con adquisición de datos y exportación
+            de información unificada mediante API REST.
+          </p>
+          <div>
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">APIs</span>
+          </div>
+          <div class="links">
+            <a href="https://github.com/Santiagox01/Prediccion-Local-de-Calidad-del-Aire"
+               target="_blank" rel="noopener noreferrer">Ver repositorio →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>EuroCoinClassifier</h3>
+          <p>
+            Pipeline de clasificación de monedas con características
+            de imagen, PCA y comparación de modelos SVM y k-NN.
+            Exactitud reportada: 88,7 % en el conjunto de prueba.
+          </p>
+          <div>
+            <span class="tag">Python</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Pytest</span>
+            <span class="tag">Streamlit</span>
+          </div>
+          <div class="links">
+            <a href="https://github.com/Santiagox01/PDI-2"
+               target="_blank" rel="noopener noreferrer">Ver repositorio →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Credit Risk Backend</h3>
+          <p>
+            Desarrollo colaborativo de una API REST para gestionar
+            solicitantes y variables de riesgo, con autenticación JWT
+            y persistencia en PostgreSQL.
+          </p>
+          <div>
+            <span class="tag">Java</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+          <div class="links">
+            <a href="https://github.com/Santiagox01/ScoreCrediticioBackend"
+               target="_blank" rel="noopener noreferrer">Ver repositorio →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Laboratorios de Sistemas de Información</h3>
+          <p>
+            Proyectos académicos con aplicaciones web, persistencia
+            de datos y un motor de reglas con pruebas automatizadas.
+          </p>
+          <div>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">Angular</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">JUnit</span>
+          </div>
+          <div class="links">
+            <a href="https://github.com/Santiagox01/lab-fsi-1"
+               target="_blank" rel="noopener noreferrer">Laboratorio 1 →</a>
+            <br>
+            <a href="https://github.com/Santiagox01/lab2-fsi"
+               target="_blank" rel="noopener noreferrer">Laboratorio 2 →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="habilidades" class="container">
+      <h2>Habilidades técnicas</h2>
+      <p class="section-intro">
+        Herramientas y tecnologías que he utilizado en mis proyectos.
+      </p>
+      <div class="skills">
+        <h3>Programación</h3>
+        <span class="tag">Python</span>
+        <span class="tag">Java</span>
+        <span class="tag">SQL</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">JavaScript</span>
+
+        <h3>Datos y bases de datos</h3>
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">DuckDB</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">ETL</span>
+        <span class="tag">Modelado dimensional</span>
+
+        <h3>Desarrollo y visualización</h3>
+        <span class="tag">Spring Boot</span>
+        <span class="tag">React</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Git / GitHub</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span>
+      </div>
+    </section>
+
+    <section id="contacto" class="container">
+      <div class="contact-box">
+        <h2>Hablemos</h2>
+        <p class="section-intro">
+          Estoy interesado en seguir aprendiendo y participar en proyectos
+          de ingeniería de datos, ciencia de datos y desarrollo de software.
+        </p>
+        <div class="buttons">
+          <a class="btn primary"
+             href="mailto:santiagojaramillovalencia2@gmail.com">
+            Enviar correo
+          </a>
+          <a class="btn" href="https://github.com/Santiagox01"
+             target="_blank" rel="noopener noreferrer">
+            GitHub ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Santiago Jaramillo Valencia · Medellín, Colombia
+    </div>
+  </footer>
+</body>
+</html>
