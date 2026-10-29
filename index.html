@@ -1,371 +1,2489 @@
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portafolio de Santiago Jaramillo Valencia. Ingeniería de Sistemas, Ciencia de Datos, Python, SQL y desarrollo de software.">
-  <title>Santiago Jaramillo | Data & Software</title>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- Primary Meta Tags -->
+  <title>Santiago Jaramillo Valencia | Data & Software Engineering</title>
+  <meta name="title" content="Santiago Jaramillo Valencia | Data & Software Engineering">
+  <meta name="description" content="Portafolio de Santiago Jaramillo Valencia. Estudiante de Ingeniería de Sistemas e Ingeniería en Ciencia de Datos en Medellín, Colombia. Especializado en ingeniería de datos, ETL, SQL, DuckDB, Python, Java y desarrollo de software.">
+  <meta name="author" content="Santiago Jaramillo Valencia">
+  <meta name="keywords" content="Santiago Jaramillo Valencia, Data Engineer, Software Engineer, Data Science, Python, SQL, DuckDB, Spring Boot, React, Medellín, Portafolio">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://santiagox01.github.io/">
+  <meta property="og:title" content="Santiago Jaramillo Valencia | Data & Software Engineering">
+  <meta property="og:description" content="Building with data, engineering and code. Estudiante de Ingeniería de Sistemas e Ingeniería en Ciencia de Datos enfocado en soluciones reproducibles y arquitectura de datos.">
+  <meta property="og:image" content="assets/projects/academic-data-warehouse.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://santiagox01.github.io/">
+  <meta property="twitter:title" content="Santiago Jaramillo Valencia | Data & Software Engineering">
+  <meta property="twitter:description" content="Building with data, engineering and code. Proyectos de Data Warehouse, pipelines ETL, visión artificial y backend seguro.">
+  <meta property="twitter:image" content="assets/projects/academic-data-warehouse.png">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b1020'/><text x='50%' y='62%' font-size='52' font-family='monospace' font-weight='bold' fill='%232dd4bf' text-anchor='middle'>SJ</text></svg>">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    /* -------------------------------------------------------------
+       DESIGN SYSTEM & CSS VARIABLES
+       ------------------------------------------------------------- */
     :root {
-      --bg: #0b1020;
-      --panel: #131b2e;
-      --text: #edf2ff;
-      --muted: #a5b2cc;
-      --accent: #70e1c1;
-      --border: #29364d;
+      --bg-main: #060913;
+      --bg-surface: #0b1120;
+      --bg-card: #0f172a;
+      --bg-card-hover: #141f36;
+      --bg-glass: rgba(15, 23, 42, 0.75);
+      
+      --border-subtle: rgba(148, 163, 184, 0.12);
+      --border-medium: rgba(148, 163, 184, 0.22);
+      --border-accent: rgba(45, 212, 191, 0.35);
+      
+      --accent: #2dd4bf;           /* Teal / Mint Green */
+      --accent-hover: #14b8a6;
+      --accent-soft: rgba(45, 212, 191, 0.12);
+      --accent-glow: rgba(45, 212, 191, 0.25);
+      
+      --secondary: #38bdf8;        /* Sky Blue */
+      --secondary-soft: rgba(56, 189, 248, 0.12);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      
+      --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.45);
+      --shadow-hover: 0 12px 30px -4px rgba(0, 0, 0, 0.65), 0 0 15px -2px rgba(45, 212, 191, 0.15);
+      --transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.7;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      font-size: 16px;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(45, 212, 191, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(56, 189, 248, 0.035) 0%, transparent 45%);
+      background-attachment: fixed;
     }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
 
+    a:hover {
+      color: #5eead4;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* Container */
     .container {
-      width: min(1080px, 90%);
-      margin: auto;
+      width: min(1160px, 92%);
+      margin-inline: auto;
     }
 
+    /* Typography Utilities */
+    .font-mono { font-family: var(--font-mono); }
+    .text-accent { color: var(--accent); }
+    .text-secondary { color: var(--secondary); }
+    .text-muted { color: var(--text-muted); }
+    
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 650px;
+      line-height: 1.6;
+    }
+
+    /* Header & Navigation */
     header {
-      border-bottom: 1px solid var(--border);
-      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: var(--transition);
     }
 
-    nav {
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-block: 16px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, rgba(45, 212, 191, 0.2), rgba(56, 189, 248, 0.2));
+      border: 1px solid var(--border-accent);
+      border-radius: 8px;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .nav-cta {
+      padding: 8px 16px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border-accent);
+      color: var(--accent);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+
+    .nav-cta:hover {
+      background: var(--accent);
+      color: #041210;
+      text-decoration: none;
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-btn {
+      display: none;
+      color: var(--text-main);
+      padding: 6px;
+    }
+
+    /* -------------------------------------------------------------
+       HERO SECTION
+       ------------------------------------------------------------- */
+    .hero-section {
+      padding-top: clamp(60px, 10vw, 100px);
+      padding-bottom: clamp(60px, 8vw, 90px);
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-badge-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-medium);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseDot 2.2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.85); }
+    }
+
+    .hero-name {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 14px;
+      color: var(--text-main);
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 18px;
+      font-family: var(--font-mono);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-description {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 580px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #041411;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: #5eead4;
+      color: #020b0a;
+      box-shadow: 0 0 20px var(--accent-glow);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-medium);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .btn-icon-link {
+      padding: 11px 16px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-medium);
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-family: var(--font-mono);
+    }
+
+    .btn-icon-link:hover {
+      border-color: var(--accent);
+      color: var(--text-main);
+      text-decoration: none;
+      background: var(--bg-card);
+    }
+
+    /* Interactive Data / ETL Pipeline Visual in Hero */
+    .pipeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pipeline-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--secondary), transparent);
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .terminal-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    .pipeline-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pipeline-step {
+      background: rgba(11, 17, 32, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      transition: var(--transition);
+    }
+
+    .pipeline-step:hover {
+      border-color: var(--border-accent);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .pipeline-step.active {
+      border-color: var(--accent);
+      background: rgba(45, 212, 191, 0.05);
+    }
+
+    .step-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .step-icon {
+      color: var(--accent);
+    }
+
+    .step-name {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .step-detail {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .step-badge {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: rgba(45, 212, 191, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(45, 212, 191, 0.3);
+    }
+
+    .pipeline-arrow {
+      display: flex;
+      justify-content: center;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      margin-block: -4px;
+    }
+
+    .terminal-output {
+      margin-top: 14px;
+      padding: 10px 12px;
+      background: #060913;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(148, 163, 184, 0.08);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    .terminal-output span.cyan { color: var(--secondary); }
+    .terminal-output span.green { color: var(--accent); }
+    .terminal-output span.yellow { color: #facc15; }
+
+    /* -------------------------------------------------------------
+       ABOUT ME SECTION
+       ------------------------------------------------------------- */
+    .about-section {
+      padding-block: 70px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      margin-bottom: 18px;
+      line-height: 1.75;
+    }
+
+    .about-text strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .highlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: var(--transition);
+    }
+
+    .highlight-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .highlight-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+    }
+
+    .highlight-content h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .highlight-content p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* -------------------------------------------------------------
+       FEATURED PROJECTS SECTION
+       ------------------------------------------------------------- */
+    .projects-section {
+      padding-block: 80px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+
+    /* Filter Pills */
+    .project-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      padding: 7px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-full);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover {
+      color: var(--text-main);
+      border-color: var(--accent);
+    }
+
+    .filter-btn.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 28px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .project-card.featured-top {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+    }
+
+    .project-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      background: #080d1a;
+      cursor: pointer;
+      aspect-ratio: 16 / 10;
+    }
+
+    .project-card.featured-top .project-img-wrapper {
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 380px;
+    }
+
+    .project-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .project-img {
+      transform: scale(1.03);
+    }
+
+    .project-zoom-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 9, 19, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: var(--transition);
+      gap: 8px;
+      color: #f8fafc;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .project-img-wrapper:hover .project-zoom-overlay {
+      opacity: 1;
+    }
+
+    .project-badge-float {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(6, 9, 19, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-accent);
+      color: var(--accent);
+      font-size: 0.74rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 2;
+    }
+
+    .project-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .project-category {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .project-metric {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+    }
+
+    .project-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    /* Santiago's Individual Contribution Box */
+    .project-contrib {
+      background: rgba(11, 17, 32, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      margin-bottom: 16px;
+    }
+
+    .contrib-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contrib-text {
+      font-size: 0.84rem;
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    /* Tech Tags */
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .tech-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      color: #cbd5e1;
+    }
+
+    .tech-tag.highlight {
+      background: rgba(45, 212, 191, 0.1);
+      border-color: rgba(45, 212, 191, 0.25);
+      color: var(--accent);
+    }
+
+    /* Links Footer */
+    .project-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .project-link-btn {
+      font-size: 0.84rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      border: 1px solid var(--border-medium);
+      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .project-link-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .project-link-btn.primary {
+      background: var(--accent-soft);
+      border-color: var(--border-accent);
+      color: var(--accent);
+    }
+
+    .project-link-btn.primary:hover {
+      background: var(--accent);
+      color: #041210;
+    }
+
+    .project-link-btn.disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* Gallery thumbnail selector */
+    .project-gallery-thumbs {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .gallery-thumb-btn {
+      width: 44px;
+      height: 28px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      opacity: 0.65;
+      transition: var(--transition);
+    }
+
+    .gallery-thumb-btn:hover, .gallery-thumb-btn.active {
+      opacity: 1;
+      border-color: var(--accent);
+    }
+
+    .gallery-thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* -------------------------------------------------------------
+       SKILLS SECTION
+       ------------------------------------------------------------- */
+    .skills-section {
+      padding-block: 80px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin-top: 36px;
+    }
+
+    .skill-category-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .skill-category-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .skill-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .skill-cat-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+    }
+
+    .skill-cat-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-chip {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 5px 10px;
+      background: rgba(11, 17, 32, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: #e2e8f0;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .skill-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--bg-card-hover);
+    }
+
+    .skill-chip.primary-tech {
+      border-color: rgba(45, 212, 191, 0.35);
+      background: rgba(45, 212, 191, 0.08);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* -------------------------------------------------------------
+       EDUCATION SECTION
+       ------------------------------------------------------------- */
+    .education-section {
+      padding-block: 80px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .education-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 36px;
+      max-width: 860px;
+    }
+
+    .timeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .timeline-card:hover {
+      border-color: var(--border-accent);
+      transform: translateX(4px);
+    }
+
+    .timeline-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(45, 212, 191, 0.15), rgba(56, 189, 248, 0.15));
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .timeline-content {
+      flex-grow: 1;
+    }
+
+    .timeline-degree {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .timeline-institution {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--secondary);
+      margin-bottom: 8px;
+    }
+
+    .timeline-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .timeline-status {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--secondary);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      margin-top: 8px;
+    }
+
+    /* -------------------------------------------------------------
+       CONTACT SECTION
+       ------------------------------------------------------------- */
+    .contact-section {
+      padding-block: 80px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .contact-card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(11, 17, 32, 0.95));
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      padding: clamp(32px, 6vw, 56px);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-tile {
+      background: rgba(6, 9, 19, 0.6);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: var(--transition);
+    }
+
+    .contact-tile:hover {
+      border-color: var(--border-accent);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .contact-tile-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .contact-tile-icon {
+      color: var(--accent);
+      width: 20px;
+      height: 20px;
+    }
+
+    .contact-tile-label {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+    }
+
+    .contact-tile-val {
+      font-size: 0.94rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .copy-btn {
+      padding: 6px 12px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-sm);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+
+    .copy-btn:hover {
+      background: var(--accent);
+      color: #041210;
+    }
+
+    /* -------------------------------------------------------------
+       FOOTER
+       ------------------------------------------------------------- */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-block: 30px;
+      background: #04070f;
+      color: var(--text-dim);
+      font-size: 0.88rem;
+    }
+
+    .footer-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 14px;
     }
 
-    .logo { font-weight: 800; letter-spacing: 1px; }
-    .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
-
-    .hero { padding: 90px 0 70px; }
-
-    .eyebrow {
-      color: var(--accent);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.8rem;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      line-height: 1.08;
-      margin: 16px 0;
-      letter-spacing: -2px;
-    }
-
-    h1 span { color: var(--accent); }
-
-    .intro {
-      color: var(--muted);
-      max-width: 680px;
-      font-size: 1.12rem;
-    }
-
-    .buttons {
+    .footer-left {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 10px 18px;
-      border: 1px solid var(--accent);
-      border-radius: 8px;
-      font-weight: 650;
-    }
-
-    .btn.primary {
-      background: var(--accent);
-      color: #071711;
-    }
-
-    section { padding: 50px 0; }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-
-    .section-intro { color: var(--muted); }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      margin-top: 28px;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
+    /* -------------------------------------------------------------
+       LIGHTBOX MODAL
+       ------------------------------------------------------------- */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(3, 6, 13, 0.94);
+      backdrop-filter: blur(12px);
+      align-items: center;
+      justify-content: center;
       padding: 24px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-container {
+      max-width: 1200px;
+      max-height: 92vh;
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9);
+      position: relative;
     }
 
-    .card h3 { margin: 0 0 8px; }
-    .card p { color: var(--muted); margin-top: 0; }
-    .card .links { margin-top: auto; padding-top: 12px; }
-
-    .tag {
-      display: inline-block;
-      font-size: 0.8rem;
-      padding: 4px 9px;
-      margin: 3px;
-      background: #202d42;
-      color: #c9f7e9;
-      border-radius: 5px;
+    .lightbox-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11, 17, 32, 0.8);
     }
 
-    .skills { margin-top: 20px; }
-
-    .contact-box {
-      border: 1px solid var(--border);
-      background: var(--panel);
-      padding: 28px;
-      border-radius: 14px;
+    .lightbox-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 25px 0;
-      color: var(--muted);
-      font-size: 0.9rem;
+    .lightbox-close-btn {
+      color: var(--text-muted);
+      padding: 4px;
+      border-radius: 4px;
+      transition: var(--transition);
+      display: flex;
     }
 
-    @media (max-width: 600px) {
-      .hero { padding-top: 55px; }
-      .nav-links { gap: 12px; }
+    .lightbox-close-btn:hover {
+      color: #f87171;
+    }
+
+    .lightbox-body {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      max-height: calc(92vh - 120px);
+      background: #03060d;
+    }
+
+    .lightbox-body img {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+    }
+
+    .lightbox-caption {
+      padding: 12px 20px;
+      background: rgba(11, 17, 32, 0.85);
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* -------------------------------------------------------------
+       MEDIA QUERIES (RESPONSIVE)
+       ------------------------------------------------------------- */
+    @media (max-width: 960px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .project-card.featured-top {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-surface);
+        border-bottom: 1px solid var(--border-medium);
+        padding: 20px;
+        gap: 16px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- =========================================================
+       NAVIGATION BAR
+       ========================================================= -->
   <header>
-    <nav class="container">
-      <a class="logo" href="#">SJ<span style="color:var(--accent)">.</span></a>
-      <div class="nav-links">
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#habilidades">Habilidades</a>
-        <a href="#contacto">Contacto</a>
-      </div>
+    <nav class="container nav-container" aria-label="Navegación principal">
+      <a href="#" class="brand-logo" aria-label="Santiago Jaramillo Portfolio">
+        <span class="brand-badge">&lt;/&gt;</span>
+        <span>Santiago<span class="text-accent">.</span>data</span>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+        <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+        <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+        <li><a href="#educacion" class="nav-link">Educación</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        <li>
+          <a href="https://github.com/Santiagox01" target="_blank" rel="noopener noreferrer" class="nav-cta" aria-label="Visitar GitHub de Santiago">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+            <span>GitHub</span>
+          </a>
+        </li>
+      </ul>
     </nav>
   </header>
 
   <main>
-    <section class="hero container">
-      <div class="eyebrow">Systems Engineering · Data Science</div>
-      <h1>Hola, soy Santiago.<br>
-        Construyo soluciones con <span>datos y código.</span>
-      </h1>
-      <p class="intro">
-        Estudiante de Ingeniería de Sistemas en la Universidad de Antioquia
-        e Ingeniería en Ciencia de Datos en el ITM. Me interesa transformar
-        datos en información útil mediante programación, bases de datos,
-        análisis y desarrollo de software.
-      </p>
-      <div class="buttons">
-        <a class="btn primary" href="#proyectos">Explorar proyectos ↘</a>
-        <a class="btn" href="https://github.com/Santiagox01"
-           target="_blank" rel="noopener noreferrer">Mi GitHub ↗</a>
-        <a class="btn" href="mailto:santiagojaramillovalencia2@gmail.com">Contactarme</a>
+    <!-- =========================================================
+         HERO SECTION
+         ========================================================= -->
+    <section class="hero-section container" id="inicio">
+      <div class="hero-grid">
+        
+        <div class="hero-info">
+          <div class="hero-badge-wrap font-mono">
+            <span class="status-dot"></span>
+            <span>Medellín, Colombia · Abierto a Prácticas y Pasantías</span>
+          </div>
+
+          <h1 class="hero-name">Santiago Jaramillo Valencia</h1>
+          
+          <div class="hero-tagline">
+            Building with data, engineering and code.
+          </div>
+
+          <p class="hero-description">
+            Estudiante de <strong>Ingeniería de Sistemas</strong> e <strong>Ingeniería en Ciencia de Datos</strong>. Enfoque técnico centrado en la construcción de pipelines ETL, modelado dimensional, bases de datos analíticas y desarrollo de software robusto con Python, SQL y Java.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#proyectos" class="btn btn-primary">
+              <span>Explorar proyectos</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="7" x2="17" y2="17"></line>
+                <polyline points="17 7 17 17 7 17"></polyline>
+              </svg>
+            </a>
+
+            <a href="https://github.com/Santiagox01" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              <span>GitHub / Santiagox01</span>
+            </a>
+
+            <a href="#contacto" class="btn-icon-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <span>Contacto directo</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Technical Pipeline Interactive Visual -->
+        <div class="pipeline-card" aria-label="Visualización de Pipeline de Datos y Arquitectura">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="terminal-dot" style="background:#ef4444"></span>
+              <span class="terminal-dot" style="background:#f59e0b"></span>
+              <span class="terminal-dot" style="background:#10b981"></span>
+            </div>
+            <div class="terminal-title">pipeline_orchestrator.sql.py</div>
+            <span class="step-badge">LIVE ENGINE</span>
+          </div>
+
+          <div class="pipeline-flow">
+            <!-- Step 1 -->
+            <div class="pipeline-step">
+              <div class="step-left">
+                <span class="step-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                </span>
+                <div>
+                  <div class="step-name">01. Data Ingestion & APIs</div>
+                  <div class="step-detail">NASA TEMPO · OpenAQ · REST Services</div>
+                </div>
+              </div>
+              <span class="step-badge">STREAMING</span>
+            </div>
+
+            <div class="pipeline-arrow">↓</div>
+
+            <!-- Step 2 -->
+            <div class="pipeline-step active">
+              <div class="step-left">
+                <span class="step-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                </span>
+                <div>
+                  <div class="step-name">02. ETL & Dimensional Model</div>
+                  <div class="step-detail">Star Schema · 60,000 facts · Surrogate Keys</div>
+                </div>
+              </div>
+              <span class="step-badge">DUCKDB OLAP</span>
+            </div>
+
+            <div class="pipeline-arrow">↓</div>
+
+            <!-- Step 3 -->
+            <div class="pipeline-step">
+              <div class="step-left">
+                <span class="step-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                </span>
+                <div>
+                  <div class="step-name">03. Inference & Analytical Output</div>
+                  <div class="step-detail">PCA + SVM (88.7%) · Spring Boot APIs · SQL Aggs</div>
+                </div>
+              </div>
+              <span class="step-badge">VALIDATED</span>
+            </div>
+          </div>
+
+          <div class="terminal-output">
+            <p><span class="cyan">sql&gt;</span> SELECT program, ROUND(AVG(nota_final), 2), rate FROM dw_academico</p>
+            <p><span class="green">✓ Query executed:</span> 60,000 rows scanned in 12ms (DuckDB vector engine)</p>
+            <p><span class="yellow">i Integrity check:</span> 0 orphan records, 0 foreign key nulls verified.</p>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <section id="sobre-mi" class="container">
-      <h2>Sobre mí</h2>
-      <p class="intro">
-        Mi formación combina ingeniería de software y ciencia de datos.
-        He trabajado en proyectos de integración de APIs, clasificación
-        mediante aprendizaje automático, modelado dimensional y desarrollo
-        de servicios backend. Disfruto aprender, experimentar y construir
-        soluciones reproducibles.
-      </p>
-    </section>
-
-    <section id="proyectos" class="container">
-      <h2>Proyectos destacados</h2>
-      <p class="section-intro">
-        Algunos proyectos académicos y personales en los que he trabajado.
-      </p>
-
-      <div class="grid">
-        <article class="card">
-          <h3>Academic Data Warehouse</h3>
-          <p>
-            Diseño de un Data Warehouse académico con esquema en estrella,
-            proceso ETL, validación de integridad y consultas analíticas
-            sobre datos sintéticos de matrícula.
+    <!-- =========================================================
+         FEATURED PROJECTS SECTION
+         ========================================================= -->
+    <section class="projects-section container" id="proyectos">
+      <div class="projects-header">
+        <div>
+          <span class="section-tag">Proyectos Reales</span>
+          <h2 class="section-title">Trabajo de Ingeniería e Investigación</h2>
+          <p class="section-subtitle">
+            Proyectos reales inspeccionados y ejecutados localmente. Cada proyecto documenta con honestidad mi rol individual, las tecnologías probadas y las métricas verificadas.
           </p>
-          <div>
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag">DuckDB</span>
-            <span class="tag">Pandas</span>
+        </div>
+
+        <div class="project-filters">
+          <button class="filter-btn active" data-filter="all">Todos (7)</button>
+          <button class="filter-btn" data-filter="data">Data & ETL</button>
+          <button class="filter-btn" data-filter="ml">Machine Learning</button>
+          <button class="filter-btn" data-filter="software">Software & Backend</button>
+          <button class="filter-btn" data-filter="space">NASA Hackathon</button>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- PROJECT 1: METEOR MADNESS (NASA Space Apps Challenge 2025) -->
+        <article class="project-card featured-top" data-category="space software">
+          <div class="project-img-wrapper" onclick="openLightbox('assets/projects/meteor-madness-simulation.png', 'Meteor Madness — Simulación 3D de Órbitas y Modelado Físico de Impacto')">
+            <span class="project-badge-float">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path></svg>
+              NASA Space Apps Challenge 2025
+            </span>
+            <img src="assets/projects/meteor-madness-simulation.png" 
+                 alt="Meteor Madness NASA Space Apps Challenge 2025 - Simulación de Órbitas 3D y Deflexión de Asteroides" 
+                 class="project-img" 
+                 loading="lazy">
+            <div class="project-zoom-overlay">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              <span>Ver captura completa de simulación</span>
+            </div>
           </div>
-          <div class="links">
-            <a href="https://github.com/Santiagox01/academic-data-warehouse"
-               target="_blank" rel="noopener noreferrer">Ver repositorio →</a>
+
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-category">Planetary Defense & Física Computacional</span>
+              <span class="project-metric">Code Nebula Team</span>
+            </div>
+
+            <h3 class="project-title">Meteor Madness — Horizons Shield (Impactor-2025)</h3>
+
+            <p class="project-desc">
+              Plataforma interactiva de defensa planetaria desarrollada para el desafío de NASA Space Apps 2025. Integra datos en tiempo real de la NASA NEO API y del USGS para proyectar trayectorias orbitales heliocéntricas, calcular riesgos de colisión y evaluar misiones de deflexión mediante modelos físicos fundamentados.
+            </p>
+
+            <div class="project-contrib">
+              <div class="contrib-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg>
+                Mi contribución individual
+              </div>
+              <p class="contrib-text">
+                Implementación de los <strong>modelos matemáticos y físicos</strong> del equipo: cálculo de energía cinética de colisión, ecuaciones de escala geológica para estimación del diámetro de cráteres (D ≈ 1.8·(E/10¹⁵)^0.22), conversión a megatones de TNT, magnitud sísmica acoplada (Gutenberg-Richter), sobrepresión atmosférica (5 psi) y balance de la Primera Ley de la Termodinámica (conservación de energía).
+              </p>
+            </div>
+
+            <div class="project-tags">
+              <span class="tech-tag highlight">Modelos Físicos</span>
+              <span class="tech-tag highlight">React 18</span>
+              <span class="tech-tag highlight">Three.js / WebGL</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">NASA NEO API</span>
+              <span class="tech-tag">USGS Elevation</span>
+              <span class="tech-tag">Tailwind CSS</span>
+            </div>
+
+            <div class="project-gallery-thumbs">
+              <button class="gallery-thumb-btn active" title="Simulación Orbital" onclick="openLightbox('assets/projects/meteor-madness-simulation.png', 'Meteor Madness — Simulación Orbital')">
+                <img src="assets/projects/meteor-madness-simulation.png" alt="Simulación">
+              </button>
+              <button class="gallery-thumb-btn" title="Dashboard Principal" onclick="openLightbox('assets/projects/meteor-madness-home.png', 'Meteor Madness — Dashboard Principal Impactor-2025')">
+                <img src="assets/projects/meteor-madness-home.png" alt="Dashboard">
+              </button>
+              <button class="gallery-thumb-btn" title="Análisis de Impactos" onclick="openLightbox('assets/projects/meteor-madness-impacts.png', 'Meteor Madness — Análisis Geológico de Impactos')">
+                <img src="assets/projects/meteor-madness-impacts.png" alt="Impactos">
+              </button>
+              <button class="gallery-thumb-btn" title="Catálogo de Asteroides" onclick="openLightbox('assets/projects/meteor-madness-asteroids.png', 'Meteor Madness — Catálogo de Asteroides NEO')">
+                <img src="assets/projects/meteor-madness-asteroids.png" alt="Asteroides">
+              </button>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com/Santiagox01/Meteor_Madness" target="_blank" rel="noopener noreferrer" class="project-link-btn primary">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <span>Repositorio GitHub</span>
+              </a>
+              <a href="https://www.canva.com/design/DAG01gFEWHY/JDqMOmIbEMweoZ5UvHBJGA/edit?utm_content=DAG01gFEWHY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span>Pitch & Slides NASA</span>
+              </a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <h3>AirFusion TEMPO</h3>
-          <p>
-            Aplicación web que integra datos de sensores simulados,
-            OpenAQ y NASA TEMPO, con adquisición de datos y exportación
-            de información unificada mediante API REST.
-          </p>
-          <div>
-            <span class="tag">React</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">APIs</span>
+        <!-- PROJECT 2: ACADEMIC DATA WAREHOUSE -->
+        <article class="project-card" data-category="data">
+          <div class="project-img-wrapper" onclick="openLightbox('assets/projects/academic-data-warehouse.png', 'Academic Data Warehouse — Modelo Dimensional en Estrella y Consultas OLAP en DuckDB')">
+            <span class="project-badge-float">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              DuckDB & SQL OLAP
+            </span>
+            <img src="assets/projects/academic-data-warehouse.png" 
+                 alt="Academic Data Warehouse - Modelo Dimensional en Estrella y Agregaciones SQL" 
+                 class="project-img" 
+                 loading="lazy">
+            <div class="project-zoom-overlay">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              <span>Ver esquema dimensional y métricas</span>
+            </div>
           </div>
-          <div class="links">
-            <a href="https://github.com/Santiagox01/Prediccion-Local-de-Calidad-del-Aire"
-               target="_blank" rel="noopener noreferrer">Ver repositorio →</a>
+
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-category">Data Engineering & Analytics</span>
+              <span class="project-metric">60,000 registros</span>
+            </div>
+
+            <h3 class="project-title">Academic Data Warehouse</h3>
+
+            <p class="project-desc">
+              Data Warehouse con esquema en estrella implementado sobre el motor columnar DuckDB. Transforma 60,000 registros operacionales de matrícula en 4 tablas de dimensiones y 1 tabla de hechos para análisis de persistencia y rendimiento estudiantil.
+            </p>
+
+            <div class="project-contrib">
+              <div class="contrib-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Proyecto Individual
+              </div>
+              <p class="contrib-text">
+                Diseño conceptual y lógico del esquema en estrella, generación estocástica de datos, proceso ETL en Python, validación de integridad referencial (0 huérfanos) y 5 consultas analíticas avanzadas en SQL.
+              </p>
+            </div>
+
+            <div class="project-tags">
+              <span class="tech-tag highlight">DuckDB</span>
+              <span class="tech-tag highlight">SQL Analítico</span>
+              <span class="tech-tag highlight">Modelado Dimensional</span>
+              <span class="tech-tag">ETL</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">Matplotlib</span>
+            </div>
+
+            <div class="project-gallery-thumbs">
+              <button class="gallery-thumb-btn active" title="Esquema y Tabla Hechos" onclick="openLightbox('assets/projects/academic-data-warehouse.png', 'Esquema en Estrella y Métricas ETL')">
+                <img src="assets/projects/academic-data-warehouse.png" alt="Esquema">
+              </button>
+              <button class="gallery-thumb-btn" title="Tendencia de Aprobación" onclick="openLightbox('assets/projects/academic-dw-plot-27.png', 'Tasa de Aprobación por Programa (2022-1 a 2024-2)')">
+                <img src="assets/projects/academic-dw-plot-27.png" alt="Aprobación">
+              </button>
+              <button class="gallery-thumb-btn" title="Riesgo Académico" onclick="openLightbox('assets/projects/academic-dw-plot-28.png', 'Riesgo Académico por Área de Conocimiento')">
+                <img src="assets/projects/academic-dw-plot-28.png" alt="Riesgo">
+              </button>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com/Santiagox01/academic-data-warehouse" target="_blank" rel="noopener noreferrer" class="project-link-btn primary">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <span>Repositorio GitHub</span>
+              </a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <h3>EuroCoinClassifier</h3>
-          <p>
-            Pipeline de clasificación de monedas con características
-            de imagen, PCA y comparación de modelos SVM y k-NN.
-            Exactitud reportada: 88,7 % en el conjunto de prueba.
-          </p>
-          <div>
-            <span class="tag">Python</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Pytest</span>
-            <span class="tag">Streamlit</span>
+        <!-- PROJECT 3: AIRFUSION TEMPO -->
+        <article class="project-card" data-category="data software">
+          <div class="project-img-wrapper" onclick="openLightbox('assets/projects/airfusion-tempo.png', 'AirFusion TEMPO — Interfaz Web de Monitoreo Ambiental e Integración de Fuentes')">
+            <span class="project-badge-float">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+              OpenAQ & NASA TEMPO
+            </span>
+            <img src="assets/projects/airfusion-tempo.png" 
+                 alt="AirFusion TEMPO - Aplicación Web de Integración de Calidad del Aire" 
+                 class="project-img" 
+                 loading="lazy">
+            <div class="project-zoom-overlay">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              <span>Ver aplicación web en ejecución</span>
+            </div>
           </div>
-          <div class="links">
-            <a href="https://github.com/Santiagox01/PDI-2"
-               target="_blank" rel="noopener noreferrer">Ver repositorio →</a>
+
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-category">Data Integration & Web Application</span>
+              <span class="project-metric">Colaborativo ITM</span>
+            </div>
+
+            <h3 class="project-title">AirFusion TEMPO</h3>
+
+            <p class="project-desc">
+              Plataforma de monitoreo y unificación de contaminantes atmosféricos (PM2.5, PM10, NO₂, O₃). Fusiona datos de sensores terrestres locales, la red global OpenAQ y observaciones satelitales del espectrómetro TEMPO de la NASA.
+            </p>
+
+            <div class="project-contrib">
+              <div class="contrib-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Mi contribución individual
+              </div>
+              <p class="contrib-text">
+                Desarrollo de la <strong>interfaz web con React y TypeScript</strong>, lógica de adquisición e ingesta de datos desde APIs externas y endpoints de unificación de datos. La visualización geoespacial y mapas fue desarrollada por mi compañera de equipo.
+              </p>
+            </div>
+
+            <div class="project-tags">
+              <span class="tech-tag highlight">React 18</span>
+              <span class="tech-tag highlight">TypeScript</span>
+              <span class="tech-tag highlight">API Integration</span>
+              <span class="tech-tag">Vite</span>
+              <span class="tech-tag">Tailwind CSS</span>
+              <span class="tech-tag">Python ETL</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com/Santiagox01/Prediccion-Local-de-Calidad-del-Aire" target="_blank" rel="noopener noreferrer" class="project-link-btn primary">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <span>Repositorio GitHub</span>
+              </a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <h3>Credit Risk Backend</h3>
-          <p>
-            Desarrollo colaborativo de una API REST para gestionar
-            solicitantes y variables de riesgo, con autenticación JWT
-            y persistencia en PostgreSQL.
-          </p>
-          <div>
-            <span class="tag">Java</span>
-            <span class="tag">Spring Boot</span>
-            <span class="tag">PostgreSQL</span>
+        <!-- PROJECT 4: EUROCOINCLASSIFIER -->
+        <article class="project-card" data-category="ml">
+          <div class="project-img-wrapper" onclick="openLightbox('assets/projects/eurocoin-confusion-matrix.png', 'EuroCoinClassifier — Matriz de Confusión Normalizada en Test Set (Exactitud: 88.68%)')">
+            <span class="project-badge-float">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+              Accuracy 88.7% Verificado
+            </span>
+            <img src="assets/projects/eurocoin-confusion-matrix.png" 
+                 alt="EuroCoinClassifier - Matriz de Confusión Normalizada y Métricas en Test Set" 
+                 class="project-img" 
+                 loading="lazy">
+            <div class="project-zoom-overlay">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              <span>Ver matriz de confusión y análisis de error</span>
+            </div>
           </div>
-          <div class="links">
-            <a href="https://github.com/Santiagox01/ScoreCrediticioBackend"
-               target="_blank" rel="noopener noreferrer">Ver repositorio →</a>
+
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-category">Computer Vision & Machine Learning</span>
+              <span class="project-metric">F1-Macro: 0.8877</span>
+            </div>
+
+            <h3 class="project-title">EuroCoinClassifier</h3>
+
+            <p class="project-desc">
+              Pipeline integral de visión computacional para clasificar monedas de euro mediante descriptores clásicos (HOG 8,100 dims, forma 17 dims, color 74 dims, textura LBP/GLCM 46 dims). Aplica reducción con PCA (195 componentes, 95% varianza) y compara modelos SVM y k-NN.
+            </p>
+
+            <div class="project-contrib">
+              <div class="contrib-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Proyecto Individual
+              </div>
+              <p class="contrib-text">
+                Implementación modular completa: segmentación adaptativa Otsu/Watershed, extracción de ROIs 128×128, partición estratificada sin fuga (70/15/15), ajuste de hiperparámetros, suite de 17 pruebas con pytest y frontend en Streamlit.
+              </p>
+            </div>
+
+            <div class="project-tags">
+              <span class="tech-tag highlight">Python</span>
+              <span class="tech-tag highlight">Scikit-learn</span>
+              <span class="tech-tag highlight">OpenCV</span>
+              <span class="tech-tag">PCA & SVM</span>
+              <span class="tech-tag">HOG / GLCM</span>
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">Pytest</span>
+            </div>
+
+            <div class="project-gallery-thumbs">
+              <button class="gallery-thumb-btn active" title="Matriz Confusión" onclick="openLightbox('assets/projects/eurocoin-confusion-matrix.png', 'EuroCoinClassifier — Matriz de Confusión')">
+                <img src="assets/projects/eurocoin-confusion-matrix.png" alt="Matriz">
+              </button>
+              <button class="gallery-thumb-btn" title="Comparativa Modelos" onclick="openLightbox('assets/projects/eurocoin-model-comparison.png', 'EuroCoinClassifier — Comparación Experimental de Clasificadores')">
+                <img src="assets/projects/eurocoin-model-comparison.png" alt="Comparativa">
+              </button>
+              <button class="gallery-thumb-btn" title="Descriptores HOG" onclick="openLightbox('assets/projects/eurocoin-hog.png', 'EuroCoinClassifier — Extracción de Características HOG')">
+                <img src="assets/projects/eurocoin-hog.png" alt="HOG">
+              </button>
+              <button class="gallery-thumb-btn" title="Etapas de Segmentación" onclick="openLightbox('assets/projects/eurocoin-segmentation.png', 'EuroCoinClassifier — Etapas de Segmentación y Extracción de ROIs')">
+                <img src="assets/projects/eurocoin-segmentation.png" alt="Segmentación">
+              </button>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com/Santiagox01/PDI-2" target="_blank" rel="noopener noreferrer" class="project-link-btn primary">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <span>Repositorio GitHub</span>
+              </a>
+            </div>
           </div>
         </article>
 
-        <article class="card">
-          <h3>Laboratorios de Sistemas de Información</h3>
-          <p>
-            Proyectos académicos con aplicaciones web, persistencia
-            de datos y un motor de reglas con pruebas automatizadas.
-          </p>
-          <div>
-            <span class="tag">Spring Boot</span>
-            <span class="tag">Angular</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">JUnit</span>
+        <!-- PROJECT 5: CREDIT RISK BACKEND -->
+        <article class="project-card" data-category="software">
+          <div class="project-img-wrapper" onclick="openLightbox('assets/projects/credit-risk-backend.png', 'Credit Risk Backend — Arquitectura Spring Boot, Flujo JWT y Pruebas MockMvc')">
+            <span class="project-badge-float">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              Java 21 · Spring Boot · JWT
+            </span>
+            <img src="assets/projects/credit-risk-backend.png" 
+                 alt="Credit Risk Backend - Arquitectura Spring Security JWT y Pruebas Automatizadas MockMvc" 
+                 class="project-img" 
+                 loading="lazy">
+            <div class="project-zoom-overlay">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              <span>Ver arquitectura de seguridad y suite de pruebas</span>
+            </div>
           </div>
-          <div class="links">
-            <a href="https://github.com/Santiagox01/lab-fsi-1"
-               target="_blank" rel="noopener noreferrer">Laboratorio 1 →</a>
-            <br>
-            <a href="https://github.com/Santiagox01/lab2-fsi"
-               target="_blank" rel="noopener noreferrer">Laboratorio 2 →</a>
+
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-category">Backend Engineering & Security</span>
+              <span class="project-metric">Colaborativo UdeA</span>
+            </div>
+
+            <h3 class="project-title">Credit Risk Backend</h3>
+
+            <p class="project-desc">
+              API REST en Java con Spring Boot para gestión de solicitantes de crédito, cálculo de ingreso neto disponible y administración de catálogo de variables de riesgo ponderadas (aislamiento transaccional Serializable para consistencia concurrent de pesos &le; 100%).
+            </p>
+
+            <div class="project-contrib">
+              <div class="contrib-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Mi contribución individual
+              </div>
+              <p class="contrib-text">
+                Implementación de la <strong>suite de pruebas de integración con MockMvc y JUnit 5</strong> (`AutenticacionIntegrationTest`, `VariableRiesgoIntegrationTest`), validación de contratos HTTP (200, 201, 401, 403, 409), corrección de errores en reglas de negocio y verificación de filtros de seguridad JWT.
+              </p>
+            </div>
+
+            <div class="project-tags">
+              <span class="tech-tag highlight">Java 21</span>
+              <span class="tech-tag highlight">Spring Boot</span>
+              <span class="tech-tag highlight">Spring Security</span>
+              <span class="tech-tag">JWT</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">MockMvc</span>
+              <span class="tech-tag">JUnit 5</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com/Santiagox01/ScoreCrediticioBackend" target="_blank" rel="noopener noreferrer" class="project-link-btn primary">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <span>Repositorio GitHub</span>
+              </a>
+            </div>
           </div>
         </article>
+
+        <!-- PROJECT 6: INFORMATION SYSTEMS LABS -->
+        <article class="project-card" data-category="software">
+          <div class="project-img-wrapper" onclick="openLightbox('assets/projects/fsi-lab2-drools.png', 'Information Systems Labs — Sistema de Asignación y Motor de Reglas Drools con Spring Boot')">
+            <span class="project-badge-float">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              Drools & Spring Boot
+            </span>
+            <img src="assets/projects/fsi-lab2-drools.png" 
+                 alt="Information Systems Labs - Sistema de Reglas de Negocio Drools y Spring Boot" 
+                 class="project-img" 
+                 loading="lazy">
+            <div class="project-zoom-overlay">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              <span>Ver interfaz de ejecución de reglas</span>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-category">Full-Stack & Business Rule Engines</span>
+              <span class="project-metric">Académico UdeA</span>
+            </div>
+
+            <h3 class="project-title">Information Systems Labs</h3>
+
+            <p class="project-desc">
+              Serie de laboratorios sobre desarrollo empresarial: gestión de aerolíneas comerciales con arquitectura desacoplada, documentación interactiva Swagger/OpenAPI y un motor de reglas de negocio con Drools para upgrades de asientos y compensaciones.
+            </p>
+
+            <div class="project-contrib">
+              <div class="contrib-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Mi contribución individual
+              </div>
+              <p class="contrib-text">
+                Implementación de entidades JPA y persistencia relacional con MySQL, integración de reglas declarativas Drools en Spring Boot y pruebas unitarias con JUnit para validación de condiciones de negocio complejas.
+              </p>
+            </div>
+
+            <div class="project-tags">
+              <span class="tech-tag highlight">Spring Boot</span>
+              <span class="tech-tag highlight">Drools Rule Engine</span>
+              <span class="tech-tag highlight">Angular</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Swagger UI</span>
+              <span class="tech-tag">JUnit</span>
+            </div>
+
+            <div class="project-gallery-thumbs">
+              <button class="gallery-thumb-btn active" title="Portal Drools" onclick="openLightbox('assets/projects/fsi-lab2-drools.png', 'Portal de Reglas de Negocio Drools')">
+                <img src="assets/projects/fsi-lab2-drools.png" alt="Drools">
+              </button>
+              <button class="gallery-thumb-btn" title="Resultado Upgrade" onclick="openLightbox('assets/projects/fsi-lab2-rules-result.png', 'Evaluación de Reglas de Compensación y Upgrade')">
+                <img src="assets/projects/fsi-lab2-rules-result.png" alt="Upgrade">
+              </button>
+              <button class="gallery-thumb-btn" title="Swagger API Lab 1" onclick="openLightbox('assets/projects/fsi-lab1-swagger.png', 'Documentación OpenAPI / Swagger de Servicios')">
+                <img src="assets/projects/fsi-lab1-swagger.png" alt="Swagger">
+              </button>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com/Santiagox01/lab2-fsi" target="_blank" rel="noopener noreferrer" class="project-link-btn primary">
+                <span>Laboratorio 2 (Drools)</span>
+              </a>
+              <a href="https://github.com/Santiagox01/lab-fsi-1" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <span>Laboratorio 1</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 7: DIGITAL INVENTORY SYSTEM (Private) -->
+        <article class="project-card" data-category="software">
+          <div class="project-img-wrapper" onclick="openLightbox('assets/projects/digital-inventory-system.png', 'Digital Inventory System — Arquitectura Móvil Offline-First con React Native / Expo')">
+            <span class="project-badge-float" style="border-color: rgba(245, 158, 11, 0.4); color: #f59e0b;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              Proyecto Privado
+            </span>
+            <img src="assets/projects/digital-inventory-system.png" 
+                 alt="Digital Inventory System - Aplicación Móvil Android Offline-First con React y Expo" 
+                 class="project-img" 
+                 loading="lazy">
+            <div class="project-zoom-overlay">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              <span>Ver arquitectura técnica de la aplicación</span>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-category">Mobile & Industrial Offline-First</span>
+              <span class="project-metric" style="color: #f59e0b; background: rgba(245, 158, 11, 0.12);">Solución Industrial</span>
+            </div>
+
+            <h3 class="project-title">Digital Inventory System</h3>
+
+            <p class="project-desc">
+              Aplicación móvil para la gestión, auditoría y control de stock de aceites y lubricantes en una estación de combustible. Arquitectura offline-first empaquetada como APK nativo para Android mediante EAS (Expo Application Services).
+            </p>
+
+            <div class="project-contrib">
+              <div class="contrib-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Mi contribución individual
+              </div>
+              <p class="contrib-text">
+                Desarrollo de la interfaz táctil con React Native y Expo, implementación del almacenamiento persistente local en SQLite/AsyncStorage y configuración del empaquetado para terminales Android.
+              </p>
+            </div>
+
+            <div class="project-tags">
+              <span class="tech-tag highlight">React Native</span>
+              <span class="tech-tag highlight">Expo SDK</span>
+              <span class="tech-tag highlight">SQLite Local</span>
+              <span class="tech-tag">Offline-First</span>
+              <span class="tech-tag">Android Packaging</span>
+            </div>
+
+            <div class="project-links">
+              <span class="project-link-btn disabled" title="Repositorio privado bajo acuerdo de confidencialidad">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <span>Código Confidencial</span>
+              </span>
+              <a href="#contacto" class="project-link-btn primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                <span>Demo bajo solicitud</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
-    <section id="habilidades" class="container">
-      <h2>Habilidades técnicas</h2>
-      <p class="section-intro">
-        Herramientas y tecnologías que he utilizado en mis proyectos.
-      </p>
-      <div class="skills">
-        <h3>Programación</h3>
-        <span class="tag">Python</span>
-        <span class="tag">Java</span>
-        <span class="tag">SQL</span>
-        <span class="tag">TypeScript</span>
-        <span class="tag">JavaScript</span>
+    <!-- =========================================================
+         ABOUT ME SECTION
+         ========================================================= -->
+    <section class="about-section container" id="sobre-mi">
+      <div class="about-grid">
+        
+        <div class="about-text">
+          <span class="section-tag">Perfil Profesional</span>
+          <h2 class="section-title">Sobre mí</h2>
+          
+          <p>
+            Soy estudiante activo de dos programas de ingeniería en Medellín: <strong>Ingeniería de Sistemas</strong> en la <em>Universidad de Antioquia</em> e <strong>Ingeniería en Ciencia de Datos</strong> en el <em>Instituto Tecnológico Metropolitano (ITM)</em>, además de contar con formación técnica en programación por el <em>SENA</em>.
+          </p>
 
-        <h3>Datos y bases de datos</h3>
-        <span class="tag">Pandas</span>
-        <span class="tag">NumPy</span>
-        <span class="tag">DuckDB</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">MySQL</span>
-        <span class="tag">ETL</span>
-        <span class="tag">Modelado dimensional</span>
+          <p>
+            Esta combinación me permite abordar proyectos desde dos perspectivas complementarias: el <strong>rigor de la ingeniería de software</strong> (arquitectura limpia, contratos de API, pruebas automatizadas y patrones de diseño) y el <strong>criterio analítico de la ciencia de datos</strong> (modelado dimensional en estrella, consultas SQL de alto desempeño, validación estadística y pipelines reproducibles).
+          </p>
 
-        <h3>Desarrollo y visualización</h3>
-        <span class="tag">Spring Boot</span>
-        <span class="tag">React</span>
-        <span class="tag">Streamlit</span>
-        <span class="tag">Git / GitHub</span>
-        <span class="tag">Power BI</span>
-        <span class="tag">Matplotlib</span>
-        <span class="tag">Seaborn</span>
+          <p>
+            Mi experiencia práctica proviene del desarrollo de proyectos de software reales, colaboraciones académicas interdisciplinarias y hackathons de nivel internacional como el <em>NASA Space Apps Challenge 2025</em>. Me entusiasma optimizar la forma en que los datos fluyen desde fuentes crudas y APIs heterogéneas hasta almacenes analíticos confiables.
+          </p>
+        </div>
+
+        <div class="about-highlights">
+          
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <div class="highlight-content">
+              <h3>Ingeniería de Datos y SQL</h3>
+              <p>Modelado dimensional en estrella, procesos ETL robustos, DuckDB para consultas OLAP sobre datasets medianos y persistencia en PostgreSQL.</p>
+            </div>
+          </div>
+
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+            </div>
+            <div class="highlight-content">
+              <h3>Física Computacional y ML Clásico</h3>
+              <p>Formulación de modelos matemáticos y físicos aplicados, descriptores visuales (HOG, textura GLCM), PCA y clasificadores supervisados con métricas auditables.</p>
+            </div>
+          </div>
+
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <div class="highlight-content">
+              <h3>Desarrollo de Software y APIs</h3>
+              <p>Servicios REST en Spring Boot con autenticación JWT, interfaces modernas en React/TypeScript y suites de pruebas automatizadas con MockMvc y pytest.</p>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
-    <section id="contacto" class="container">
-      <div class="contact-box">
-        <h2>Hablemos</h2>
-        <p class="section-intro">
-          Estoy interesado en seguir aprendiendo y participar en proyectos
-          de ingeniería de datos, ciencia de datos y desarrollo de software.
+    <!-- =========================================================
+         TECHNICAL SKILLS SECTION
+         ========================================================= -->
+    <section class="skills-section container" id="habilidades">
+      <div>
+        <span class="section-tag">Stack Verificado</span>
+        <h2 class="section-title">Habilidades Técnicas</h2>
+        <p class="section-subtitle">
+          Tecnologías y herramientas que he implementado directamente en mis proyectos académicos y colaborativos. Sin barras de porcentaje arbitrarias.
         </p>
-        <div class="buttons">
-          <a class="btn primary"
-             href="mailto:santiagojaramillovalencia2@gmail.com">
-            Enviar correo
-          </a>
-          <a class="btn" href="https://github.com/Santiagox01"
-             target="_blank" rel="noopener noreferrer">
-            GitHub ↗
-          </a>
+      </div>
+
+      <div class="skills-grid">
+        
+        <!-- Programming -->
+        <div class="skill-category-card">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <h3 class="skill-cat-title">Programación</h3>
+          </div>
+          <div class="skill-chips">
+            <span class="skill-chip primary-tech">Python</span>
+            <span class="skill-chip primary-tech">Java</span>
+            <span class="skill-chip primary-tech">SQL</span>
+            <span class="skill-chip">TypeScript</span>
+            <span class="skill-chip">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Data & Databases -->
+        <div class="skill-category-card">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            </div>
+            <h3 class="skill-cat-title">Datos y Bases de Datos</h3>
+          </div>
+          <div class="skill-chips">
+            <span class="skill-chip primary-tech">DuckDB</span>
+            <span class="skill-chip primary-tech">PostgreSQL</span>
+            <span class="skill-chip primary-tech">Modelado Dimensional (Star Schema)</span>
+            <span class="skill-chip primary-tech">ETL Pipelines</span>
+            <span class="skill-chip">Pandas</span>
+            <span class="skill-chip">NumPy</span>
+            <span class="skill-chip">MySQL</span>
+            <span class="skill-chip">SQLite</span>
+          </div>
+        </div>
+
+        <!-- Machine Learning & Image Processing -->
+        <div class="skill-category-card">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <h3 class="skill-cat-title">ML y Visión Computacional</h3>
+          </div>
+          <div class="skill-chips">
+            <span class="skill-chip primary-tech">Scikit-learn</span>
+            <span class="skill-chip primary-tech">PCA</span>
+            <span class="skill-chip">SVM</span>
+            <span class="skill-chip">k-NN</span>
+            <span class="skill-chip">Extracción de Descriptores (HOG, GLCM)</span>
+            <span class="skill-chip">OpenCV</span>
+            <span class="skill-chip">Métricas & Matrices de Confusión</span>
+          </div>
+        </div>
+
+        <!-- Software Development -->
+        <div class="skill-category-card">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <h3 class="skill-cat-title">Desarrollo y Backend</h3>
+          </div>
+          <div class="skill-chips">
+            <span class="skill-chip primary-tech">Spring Boot</span>
+            <span class="skill-chip primary-tech">APIs REST</span>
+            <span class="skill-chip primary-tech">React</span>
+            <span class="skill-chip">Spring Security & JWT</span>
+            <span class="skill-chip">MockMvc & JUnit 5</span>
+            <span class="skill-chip">Pytest</span>
+            <span class="skill-chip">Git / GitHub</span>
+            <span class="skill-chip">Expo (Mobile)</span>
+          </div>
+        </div>
+
+        <!-- Visualization -->
+        <div class="skill-category-card">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            </div>
+            <h3 class="skill-cat-title">Visualización y Análisis</h3>
+          </div>
+          <div class="skill-chips">
+            <span class="skill-chip primary-tech">Matplotlib</span>
+            <span class="skill-chip primary-tech">Seaborn</span>
+            <span class="skill-chip primary-tech">Streamlit</span>
+            <span class="skill-chip">Three.js / WebGL</span>
+            <span class="skill-chip">Power BI</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         EDUCATION SECTION
+         ========================================================= -->
+    <section class="education-section container" id="educacion">
+      <div>
+        <span class="section-tag">Formación Académica</span>
+        <h2 class="section-title">Educación</h2>
+        <p class="section-subtitle">
+          Instituciones de educación superior y técnica donde desarrollo mi perfil profesional.
+        </p>
+      </div>
+
+      <div class="education-timeline">
+        
+        <div class="timeline-card">
+          <div class="timeline-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+          </div>
+          <div class="timeline-content">
+            <h3 class="timeline-degree">Ingeniería de Sistemas</h3>
+            <div class="timeline-institution">Universidad de Antioquia (UdeA) · Medellín, Colombia</div>
+            <p class="timeline-desc">
+              Formación integral en fundamentos de computación, estructuras de datos y algoritmos, ingeniería de software, arquitectura de sistemas distribuidos, bases de datos relacionales y pruebas automatizadas.
+            </p>
+            <span class="timeline-status">Estudiante activo</span>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+          </div>
+          <div class="timeline-content">
+            <h3 class="timeline-degree">Ingeniería en Ciencia de Datos</h3>
+            <div class="timeline-institution">Instituto Tecnológico Metropolitano (ITM) · Medellín, Colombia</div>
+            <p class="timeline-desc">
+              Especialización en captura y procesamiento de datos masivos, modelado estadístico, aprendizaje automático, visualización analítica, integración de fuentes geoespaciales y bases de datos OLAP.
+            </p>
+            <span class="timeline-status">Estudiante activo</span>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          </div>
+          <div class="timeline-content">
+            <h3 class="timeline-degree">Formación Técnica en Programación de Software</h3>
+            <div class="timeline-institution">Servicio Nacional de Aprendizaje (SENA) · Colombia</div>
+            <p class="timeline-desc">
+              Fundamentos prácticos de desarrollo de software, lógica algorítmica, programación orientada a objetos, bases de datos SQL y desarrollo de soluciones web.
+            </p>
+            <span class="timeline-status">Formación técnica concluida</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CONTACT SECTION
+         ========================================================= -->
+    <section class="contact-section container" id="contacto">
+      <div class="contact-card">
+        <div class="contact-grid">
+          <div>
+            <span class="section-tag">Contacto Profesional</span>
+            <h2 class="section-title">Hablemos de Oportunidades</h2>
+            <p class="section-subtitle" style="margin-bottom: 24px;">
+              Estoy activamente en búsqueda de <strong>prácticas profesionales y oportunidades de colaboración</strong> en áreas de Ingeniería de Datos, Ciencia de Datos y Desarrollo de Software. Si tu equipo busca alguien enfocado en código reproducible y datos consistentes, conversemos.
+            </p>
+
+            <div class="hero-actions">
+              <a href="mailto:santiagojaramillovalencia2@gmail.com" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                <span>Enviar correo directo</span>
+              </a>
+
+              <a href="https://github.com/Santiagox01" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <span>GitHub / Santiagox01</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-methods">
+            
+            <div class="contact-tile">
+              <div class="contact-tile-left">
+                <svg class="contact-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                <div>
+                  <div class="contact-tile-label">Correo Electrónico</div>
+                  <div class="contact-tile-val" id="emailText">santiagojaramillovalencia2@gmail.com</div>
+                </div>
+              </div>
+              <button class="copy-btn" id="copyEmailBtn" title="Copiar correo al portapapeles">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span id="copyBtnLabel">Copiar</span>
+              </button>
+            </div>
+
+            <div class="contact-tile">
+              <div class="contact-tile-left">
+                <svg class="contact-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <div>
+                  <div class="contact-tile-label">Ubicación</div>
+                  <div class="contact-tile-val">Medellín, Antioquia, Colombia</div>
+                </div>
+              </div>
+              <span class="step-badge" style="color:var(--text-dim); border-color:var(--border-subtle); background:transparent;">UTC-5</span>
+            </div>
+
+            <div class="contact-tile">
+              <div class="contact-tile-left">
+                <svg class="contact-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <div>
+                  <div class="contact-tile-label">Disponibilidad</div>
+                  <div class="contact-tile-val">Prácticas formativas y pasantías</div>
+                </div>
+              </div>
+              <span class="status-dot"></span>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
   <footer>
-    <div class="container">
-      © 2026 Santiago Jaramillo Valencia · Medellín, Colombia
+    <div class="container footer-content">
+      <div class="footer-left">
+        <span>© 2026 Santiago Jaramillo Valencia</span>
+        <span>·</span>
+        <span>Medellín, Colombia</span>
+      </div>
+      <div>
+        <a href="#inicio" class="text-muted" style="font-size: 0.85rem; font-family: var(--font-mono);">
+          Volver arriba ↑
+        </a>
+      </div>
     </div>
   </footer>
+
+  <!-- =========================================================
+       LIGHTBOX MODAL FOR REAL PROJECT CAPTURES
+       ========================================================= -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+    <div class="lightbox-container">
+      <div class="lightbox-header">
+        <h3 class="lightbox-title" id="lightboxTitle">Captura de Proyecto</h3>
+        <button class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Cerrar vista de imagen">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="lightbox-body">
+        <img src="" alt="" id="lightboxImg">
+      </div>
+      <div class="lightbox-caption" id="lightboxCaption">
+        Captura de pantalla real de la aplicación en ejecución.
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       CLIENT-SIDE SCRIPTS
+       ========================================================= -->
+  <script>
+    // Mobile navigation toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      mobileBtn.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close mobile nav on link click
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Project filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          if (filter === 'all') {
+            card.style.display = card.classList.contains('featured-top') ? 'grid' : 'flex';
+          } else {
+            const categories = card.getAttribute('data-category').split(' ');
+            if (categories.includes(filter)) {
+              card.style.display = card.classList.contains('featured-top') ? 'grid' : 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+
+    // Lightbox modal functionality
+    const modal = document.getElementById('lightboxModal');
+    const modalImg = document.getElementById('lightboxImg');
+    const modalTitle = document.getElementById('lightboxTitle');
+    const modalCaption = document.getElementById('lightboxCaption');
+    const closeBtn = document.getElementById('lightboxCloseBtn');
+
+    window.openLightbox = function(src, title) {
+      modalImg.src = src;
+      modalImg.alt = title;
+      modalTitle.textContent = title;
+      modalCaption.textContent = 'Evidencia y resultado verificado: ' + title;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    function closeLightbox() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => { modalImg.src = ''; }, 200);
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+
+    // Copy Email to clipboard with user feedback
+    const copyBtn = document.getElementById('copyEmailBtn');
+    const copyLabel = document.getElementById('copyBtnLabel');
+    const emailVal = 'santiagojaramillovalencia2@gmail.com';
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(emailVal).then(() => {
+        copyLabel.textContent = '¡Copiado!';
+        copyBtn.style.background = '#2dd4bf';
+        copyBtn.style.color = '#041210';
+        setTimeout(() => {
+          copyLabel.textContent = 'Copiar';
+          copyBtn.style.background = '';
+          copyBtn.style.color = '';
+        }, 2200);
+      }).catch(() => {
+        window.location.href = 'mailto:' + emailVal;
+      });
+    });
+
+    // Active navigation highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset;
+      sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 120;
+        const sectionId = current.getAttribute('id');
+        const navAnchor = document.querySelector(`.nav-link[href*="${sectionId}"]`);
+        if (navAnchor) {
+          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            navAnchor.classList.add('active');
+          } else {
+            navAnchor.classList.remove('active');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
